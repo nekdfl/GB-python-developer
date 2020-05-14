@@ -8,38 +8,96 @@
 # Набор натуральных чисел можно задать непосредственно в коде, например, my_list = [7, 5, 3, 3, 2].
 
 
-my_list = [0, 0, 1, 8]
-print(f"У нас есть рейтинг. {my_list}")
+def readValidUserInput():
+    try:
+        number = int(input("Введите целое число от 0 до 9: "))
+        if number > 9 or number < 0:
+            raise RuntimeError(f"Ваше число {number}, вне диапазона 0-9!")
+        if type(number) is not int:
+            raise RuntimeError(f"Ваше число {number}, не целого типа!")
+    except RuntimeError as e:
+        print(f"{e}")
+        exit(1)
+    except ValueError:
+        print("Ваше значение не удовлетворяет условию целое число от 0 до 9")
+        exit(1)
 
-# проверка ввода
-try:
-    number = int(input("Введите целое число от 0 до 9: "))
-    if number > 9 or number < 0:
-        raise RuntimeError(f"Ваше число {number}, вне диапазона 0-9!")
-    if type(number) is not int:
-        raise RuntimeError(f"Ваше число {number}, не целого типа!")
+    return number
 
-except RuntimeError as e:
-    print(f"{e}")
-except ValueError:
-    print("Ваше значение не удовлетворяет условию целое число от 0 до 9")
 
-# если числа нет в списке, ищем место для в списке
-if my_list.count(number) == 0:
-    pos_range = range(0 + 1, len(my_list) + 1)  # +1 для смещения, так как начали с 1 а не с 0
+def print_rating(my_rating):
+    print(f"У нас есть рейтинг. {my_rating}")
 
-    for num, val in zip(pos_range, my_list):
-        # if val > number:
-        #     my_list.insert(num, number)
-        #     print(f"Вставка в позицию {len(num)}")
-        #     break
 
-        if my_list.count(number) == 0:
-            my_list.insert(len(my_list), number)
-            print(f"Вставка в позицию {len(my_list)}")
-else:
-    idx = my_list.index(number)
-    my_list.insert(idx, number)
-    print(f"Вставка в позицию {idx}")
+def insert_unique_value(value, my_rating):
+    ins_idx = -1
+    for idx, item in enumerate(my_rating):
+        # print(idx)
+        if item > value:
+            if idx == 0:
+                ins_idx = idx
+                break
+            elif idx > 0:
+                ins_idx = idx
+                break
 
-print(f"У нас есть рейтинг. {my_list}")
+    if ins_idx == -1:
+        print(f"Число {value} больше всех значений в списке. Добавляем в конец списка, значение {value}")
+        my_rating.append(value)
+    else:
+        my_rating.insert(ins_idx, value)
+        print(f"Вставка в {ins_idx}, значения {value}")
+
+    print_rating(my_rating)
+
+
+def insert_exist_value(value, my_rating):
+    pass
+    ins_idx = -1
+    for idx, item in enumerate(my_rating):
+        if item == value and ins_idx == -1:
+            ins_idx = idx
+
+        if item > value and ins_idx != -1:
+            break
+
+    my_rating.insert(ins_idx, value)
+    print(f"Вставка в {ins_idx}, значения {value}")
+
+    print_rating(my_rating)
+
+
+def do_tests(my_rating):
+    test_input_list = [0, 1, 3, 9, 5]
+    for value in test_input_list:
+        # print(f"{value}")
+        if my_rating.count(value) == 0:
+            pass
+            print(f"Алгоритм поска места для нового элемента: '{value}'")
+            insert_unique_value(value, my_rating)
+        else:
+            print("Алгоритм поска местя для элемента в списке")
+            insert_exist_value(value, my_rating)
+
+
+def do_update_rating(value, my_rating):
+    if my_rating.count(value) == 0:
+        print(f"Алгоритм поска места для нового элемента: '{value}'")
+        insert_unique_value(value, my_rating)
+    else:
+        print("Алгоритм поска местя для элемента в списке")
+        insert_exist_value(value, my_rating)
+
+
+def main():
+    pass
+    my_rating = [1, 1, 3, 3, 8]
+
+    number = readValidUserInput()
+    print_rating(my_rating)
+    # do_tests(my_rating)
+    do_update_rating(number, my_rating)
+
+
+if __name__ == "__main__":
+    main()

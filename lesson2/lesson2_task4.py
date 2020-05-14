@@ -5,6 +5,6 @@
 user_string = input("Введите несколько слов через пробел: ").rstrip(" ").split(" ")
 num_range = range(1, len(user_string)+1)  # +1 для смещения, так как начали с 1 а не с 0
 
-for num, str in zip(num_range, user_string):
+for num, str in enumerate(user_string, 1):
     print(f"{num} {str}")
 
