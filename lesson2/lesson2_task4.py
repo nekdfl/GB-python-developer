@@ -2,8 +2,9 @@
 #  Вывести каждое слово с новой строки.
 #  Строки необходимо пронумеровать. Если в слово длинное, выводить только первые 10 букв в слове.
 
-user_string = input("Введите несколько слов через пробел: ")
-data_list = user_string.split(" ")
+user_string = input("Введите несколько слов через пробел: ").rstrip(" ").split(" ")
+num_range = range(1, len(user_string)+1)  # +1 для смещения, так как начали с 1 а не с 0
 
-for data in data_list:
-    print(f"{data[:10]}")
+for num, str in zip(num_range, user_string):
+    print(f"{num} {str}")
+
