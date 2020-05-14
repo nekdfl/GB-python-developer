@@ -37,7 +37,7 @@ def infill_storage_data():
                                   "цена": good_price,
                                   "колличество": good_count,
                                   "ед": mesure_unit})
-    return  storage_data_list
+    return storage_data_list
 
 
 def convert_data_to_tuple_list(storage_data_list):
@@ -67,7 +67,7 @@ def convert_tuple_to_analytic(tuple_list):
 def main():
     storage_data_list = []
     print("Ввод данных для инвенторизации на складе")
-    storage_data_list =infill_storage_data()
+    storage_data_list = infill_storage_data()
     print("Превращаем ввод в список кортежей")
     tuple_list = convert_data_to_tuple_list(storage_data_list)
     print("Получился список кортежей")

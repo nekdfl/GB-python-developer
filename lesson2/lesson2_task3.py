@@ -43,4 +43,3 @@ elif autumn_list.count(month):
     print("осень")
 else:
     print("Wrong number of month")
-
