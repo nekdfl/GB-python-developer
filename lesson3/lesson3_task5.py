@@ -12,7 +12,7 @@ def get_user_data_list():
     return user_data.split(" ")
 
 
-def __get_value_from_item(item):
+def __get_value_from_item_v1(item):
     got_point = False
     tmp_str = ""
     got_breakchar = False
@@ -38,14 +38,14 @@ def __get_value_from_item(item):
     return got_breakchar, res
 
 
-def get_summ_user_data_list(user_data_list):
+def get_summ_user_data_list_v1(user_data_list):
     res_list = []
     got_breakchar = False
     for item in user_data_list:
         if item == "":
             continue
 
-        got_breakchar, res = __get_value_from_item(item)
+        got_breakchar, res = __get_value_from_item_v1(item)
 
         if got_breakchar is True:
             break
@@ -57,7 +57,6 @@ def get_summ_user_data_list(user_data_list):
 
 
 def variant1():
-    ascii_num_char_range = range(48, 58)
     got_breakchar = False
     summa = 0
 
@@ -67,7 +66,7 @@ def variant1():
 
     while not got_breakchar:
         user_data_list = get_user_data_list()
-        res, got_breakchar = get_summ_user_data_list(user_data_list)
+        res, got_breakchar = get_summ_user_data_list_v1(user_data_list)
         summa += res
         print(f"накопленная сумма: {summa}")
 
@@ -116,12 +115,10 @@ def varian2():
 def main():
     pass
 
-
-    # variant1()
-    varian2()
+    variant1()
+    # varian2()
     print("Программа завершена")
 
 
 if __name__ == "__main__":
     main()
-
