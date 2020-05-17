@@ -7,19 +7,6 @@
 # ранее сумме и после этого завершить программу.
 
 
-def show_ascii_spec_list(ascii_char_range):
-    for ch in ascii_char_range:
-        print(f"{chr(ch)} ", end="")
-    print("")
-
-
-def convert_ascii_range_to_list(ascii_range):
-    res = []
-    for ch in ascii_range:
-        res.append(chr(ch))
-    return res
-
-
 def get_user_data_list():
     user_data = input("Введите числа через пробел: ")
     return user_data.split(" ")
@@ -128,9 +115,7 @@ def varian2():
 
 def main():
     pass
-    # ascii_spec_char_range = range(33, 48)
-    # show_ascii_spec_list(ascii_spec_char_range)
-    # show_ascii_spec_list(ascii_num_char_range)
+
 
     # variant1()
     varian2()
