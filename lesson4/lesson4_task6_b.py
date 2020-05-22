@@ -29,7 +29,7 @@ def get_random_list(start, stop, size):
 
 def main():
     new_list = get_random_list(1, 100, 3)
-
+    res_list = []
     cnt = 0
     target_element_count = 10
     print(new_list)
@@ -37,9 +37,12 @@ def main():
         if cnt > target_element_count:
             break
         else:
-            print(el)
+            res_list.append(el)
+            print(res_list)
         cnt += 1
-
+    print("*" * 40)
+    print(f"res list = \n"
+          f"{res_list}")
     print("Программа завершена")
 
 
