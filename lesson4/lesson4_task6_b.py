@@ -30,14 +30,16 @@ def get_random_list(start, stop, size):
 def main():
     new_list = get_random_list(1, 100, 3)
     res_list = []
+    tuple_list = tuple(new_list)
     cnt = 0
     target_element_count = 10
     print(new_list)
-    for el in cycle(new_list):
+    for el in cycle(tuple_list):
         if cnt > target_element_count:
             break
         else:
-            res_list.append(el)
+            res_list.insert(len(res_list), el)
+
             print(res_list)
         cnt += 1
     print("*" * 40)
