@@ -30,7 +30,7 @@ def readfile_firm_list(filepath):
 
 
 def savetojson(filepath, data):
-    with open(filepath, 'a+') as f:
+    with open(filepath, 'w+') as f:
         json.dump(data, f, indent=3)
 
 
@@ -60,9 +60,12 @@ def main():
     res_dictlist = []
     res_dictlist.append(firm_dict)
     res_dictlist.append(avarage_profit_dict)
-    print(res_dictlist)
+    # print(res_dictlist)
 
+    print(f"сохранил json в файл {outfile_name}")
     savetojson(outfile_name, res_dictlist)
+
+    # print(json.dumps(res_dictlist, indent=3))
 
     print("Программа завершена")
 
