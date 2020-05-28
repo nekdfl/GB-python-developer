@@ -18,16 +18,14 @@ class Road():
         self._width = width
 
     def calc(self, mass, height):
-        res = self._length * self._width * mass * height
-        return res
+        kg = self._length * self._width * mass * height
+        return kg
 
 
 def main():
-    massa = float(input("Введите массу кг на 1 кв.м. тощиной 1 см: "))
-    hight = float(input("Введите толщину асфальта м. : "))
-
     trassa_e95 = Road(5000, 20)
-    mass_need = (trassa_e95.calc(25, 5)) / 1000
+    mass_need = trassa_e95.calc(25, 5) / 1000
+
     print(f"Нам нужно {mass_need} тонн")
 
     print("Программа завершена")

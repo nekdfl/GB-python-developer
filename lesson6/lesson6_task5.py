@@ -29,7 +29,6 @@ class Handle(Pencil):
 
 
 def main():
-
     stationary = Stationery("Перо")
     pencil = Pencil("карандаш 3м")
     handle = Handle("Маркер")

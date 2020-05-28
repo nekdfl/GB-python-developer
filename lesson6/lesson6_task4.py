@@ -32,11 +32,11 @@ class Car:
 
 class TownCar(Car):
     pass
-    _speed_limit = 60
+    __speed_limit = 60
 
     def show_speed(self):
-        if self._speed > self._speed_limit:
-            print(f"{self._name} Get slow! Speed under limit of 60 km/h")
+        if self._speed > self.__speed_limit:
+            print(f"{self._name} Get slow! Speed over limit of 60 km/h")
         else:
             super().show_speed()
 
@@ -45,16 +45,16 @@ class SportCar(Car):
     pass
 
 
-class WorkCar(TownCar):
+class WorkCar(Car):
     pass
 
-    _speed_limit = 40
+    __speed_limit = 40
 
-    # def show_speed(self):
-    #     if self._speed > self.__speed_limit:
-    #         print(f"{self._name} Get slow! Speed under limit of 60 km/h")
-    #     else:
-    #         super().show_speed()
+    def show_speed(self):
+        if self._speed > self.__speed_limit:
+            print(f"{self._name} Get slow! Speed over limit of 60 km/h")
+        else:
+            super().show_speed()
 
 
 class PoliceCar(Car):
@@ -68,10 +68,10 @@ def main():
     towncar.show_speed()
     sportcar = SportCar("ford mustang", 180, "белый")
     sportcar.show_speed()
-    workcar = WorkCar("Зил", 60, "бежевый")
-    workcar.show_speed()
-    workcar = WorkCar("Зил2", 35, "синий")
-    workcar.show_speed()
+    workcar1 = WorkCar("Зил", 60, "бежевый")
+    workcar1.show_speed()
+    workcar2 = WorkCar("Зил2", 35, "синий")
+    workcar2.show_speed()
     print("Программа завершена")
 
 
