@@ -36,11 +36,11 @@ class Nucleos:
         return self._cells_count
 
     def __add__(self, other):
-        nucleo = Nucleos(self._cells_count + other.cells_count)
+        nucleo = Nucleos(self.cells_count + other.cells_count)
         return nucleo
 
     def __sub__(self, other):
-        cell_cnt = self._cells_count - other.cells_count
+        cell_cnt = self.cells_count - other.cells_count
         if cell_cnt < 0:
             raise RuntimeError("Результат разности клеток - отрицательный")
 
@@ -48,15 +48,15 @@ class Nucleos:
         return nucleo
 
     def __mul__(self, other):
-        nucleo = Nucleos(self._cells_count * other.cells_count)
+        nucleo = Nucleos(self.cells_count * other.cells_count)
         return nucleo
 
     def __truediv__(self, other):
-        nucleo = Nucleos(self._cells_count // other.cells_count)
+        nucleo = Nucleos(self.cells_count // other.cells_count)
         return nucleo
 
     def __str__(self):
-        return str(self._cells_count)
+        return str(self.cells_count)
 
     @staticmethod
     def make_order(nucleos, cnt):
@@ -80,8 +80,9 @@ def main():
     d = Nucleos(a - b)
     e = Nucleos(a * b)
     f = Nucleos(a / b)
-    print(f"+\t| -\t| *\t| /\t|")
-    print(f"{c}\t| {d}\t| {e}\t| {f}")
+    print(f"Клетка a: {a}; Клетка b: {b}")
+    print(f"| + \t| - \t| * \t| / \t|")
+    print(f"| {c} \t| {d} \t| {e} \t| {f} \t|")
 
     Nucleos.make_order(c, 6)
 
