@@ -35,8 +35,8 @@ class Nucleos:
     def cells_count(self):
         return self._cells_count
 
-    def get_cells_count(self):
-        return self._cells_count
+    # def get_cells_count(self):
+    #     return self._cells_count
 
     def __add__(self, other):
         nucleo = Nucleos(self._cells_count + other.cells_count)
@@ -61,9 +61,10 @@ class Nucleos:
     def __str__(self):
         return str(self._cells_count)
 
-    def make_order(self, nucleo, cnt):
+    @staticmethod
+    def make_order(nucleos, cnt):
         pass
-        nc_cnt = int(str(nucleo.get_cells_count()))
+        nc_cnt = int(str(nucleos.cells_count))
         full_cycle = nc_cnt // cnt
         out_of_cycle = nc_cnt % cnt
 
@@ -85,7 +86,7 @@ def main():
     print(f"+\t| -\t| *\t| /\t|")
     print(f"{c}\t| {d}\t| {e}\t| {f}")
 
-    c.make_order(c, 5)
+    Nucleos.make_order(d, 5)
 
     print("Программа завершена")
 
