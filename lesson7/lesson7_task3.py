@@ -35,9 +35,6 @@ class Nucleos:
     def cells_count(self):
         return self._cells_count
 
-    # def get_cells_count(self):
-    #     return self._cells_count
-
     def __add__(self, other):
         nucleo = Nucleos(self._cells_count + other.cells_count)
         return nucleo
@@ -86,7 +83,7 @@ def main():
     print(f"+\t| -\t| *\t| /\t|")
     print(f"{c}\t| {d}\t| {e}\t| {f}")
 
-    Nucleos.make_order(d, 5)
+    Nucleos.make_order(c, 6)
 
     print("Программа завершена")
 
