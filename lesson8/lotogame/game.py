@@ -99,6 +99,7 @@ class LotoGame:
 
 
     def make_step(self):
+
         print(f"Билет игрока {self._computer.name}")
         print(self._computer.bill)
 

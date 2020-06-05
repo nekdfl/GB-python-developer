@@ -3,6 +3,8 @@
 
 import signal
 from lotogame import LotoGame
+# from os import system
+# from os import name
 
 
 # MainApp = singleton с отложенным созданием экземпляра
@@ -14,12 +16,21 @@ class MainApp:
     def init(self, playername):
         self.__playername = playername
 
-
     @classmethod
     def get_instance(cls):
         if not cls.__instance:
             cls.__instance = MainApp()
         return cls.__instance
+
+    def clear_screen(self):
+        # # for windows
+        # if name == 'nt':
+        #     _ = system('cls')
+        #
+        #     # for mac and linux(here, os.name is 'posix')
+        # else:
+        #     _ = system('clear')
+        print("\n" * 40)
 
     def loop(self):
         finish_game = False
@@ -30,6 +41,7 @@ class MainApp:
 
             while not self.__game.do_we_have_winner():
                 player_fault = self.__game.make_step()
+                self.clear_screen()
                 if player_fault:
                     break
 
