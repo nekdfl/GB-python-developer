@@ -12,10 +12,10 @@ class LotoGame:
     def __init__(self, playername):
         pass
         self.__player_name = playername
-        self._str_in_bill = 1
-        self._num_in_str = 3
+        self._str_in_bill = 3
+        self._num_in_str = 5
         min_num = 1
-        max_num = 10
+        max_num = 90
         el_in_str = 9
         bg = BillGenerator(min_num, max_num, self._str_in_bill, el_in_str, self._num_in_str)
         player_bill = bg.generate_bill()
@@ -99,12 +99,15 @@ class LotoGame:
 
 
     def make_step(self):
+        print(f"Билет игрока {self._computer.name}")
+        print(self._computer.bill)
+
         print(f"Билет игрока {self._player.name}")
         print(self._player.bill)
-        # print(f"Билет игрока {self._computer.name}")
-        # print(self._computer.bill)
+
         keg = self.__lototron.get_next_keg()
-        # self._computer.bill.strike(keg)
+        self._computer.bill.strike(keg)
+
         answer = self.ask_yesno(f"у вас есть число {keg} в билете?")
         player_have_keg = self._player.bill.have_num(keg)
         game_end = False
