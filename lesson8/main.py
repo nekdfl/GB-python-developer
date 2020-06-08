@@ -41,9 +41,11 @@ class MainApp:
 
             while not self.__game.do_we_have_winner():
                 player_fault = self.__game.make_step()
-                self.clear_screen()
+
                 if player_fault:
                     break
+                else:
+                    self.clear_screen()
 
             answer = LotoGame.ask_yesno("Съиграем еще раз?")
             if answer == False:
